@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(/src/assets/Fonts/static/Inter_18pt-Regular.ttf);
+}
+
+@font-face {
+  font-family: "InterMedium";
+  src: url(/src/assets/Fonts/static/Inter_18pt-Medium.ttf);
+}
+@font-face {
+  font-family: "InterThin";
+  src: url(/src/assets/Fonts/static/Inter_18pt-Thin.ttf);
+}
