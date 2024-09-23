@@ -1,5 +1,8 @@
+import EventCard from '../components/EventCard/EventCard';
 const Home = () => {
-  return <></>;
+  return <>
+ <EventCard/> 
+  </>;
 };
 
 export default Home;

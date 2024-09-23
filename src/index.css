@@ -1,19 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    src: url(/src/assets/Fonts/static/Inter_18pt-Regular.ttf);
+  }
 
-@font-face {
-  font-family: "Inter";
-  src: url(/src/assets/Fonts/static/Inter_18pt-Regular.ttf);
-}
+  @font-face {
+    font-family: "InterMedium";
+    src: url(/src/assets/Fonts/static/Inter_18pt-Medium.ttf);
+  }
+  @font-face {
+    font-family: "InterThin";
+    src: url(/src/assets/Fonts/static/Inter_18pt-Thin.ttf);
+  }
 
-@font-face {
-  font-family: "InterMedium";
-  src: url(/src/assets/Fonts/static/Inter_18pt-Medium.ttf);
-}
-@font-face {
-  font-family: "InterThin";
-  src: url(/src/assets/Fonts/static/Inter_18pt-Thin.ttf);
+  :root {
+    --color-primary: #5d3ede;
+    --color-secondary: #00ecaa;
+    --color-tertiary: #ffb21c;
+    --color-tBase: #000000;
+    --color-date: #7254ee;
+    --color-location: #a6a6a6;
+    --color-gray: #f7f7f7;
+  }
 }

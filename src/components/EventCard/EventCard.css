@@ -1,0 +1,6 @@
+.eventImage {
+  background-image: url(/src/assets/img/Image.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
