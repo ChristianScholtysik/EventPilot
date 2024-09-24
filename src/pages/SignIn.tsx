@@ -4,6 +4,7 @@ import supabaseClient from "../lib/supabaseClient";
 import { useState } from "react";
 import Logo from "../components/Logo";
 import { BsArrowRight } from "react-icons/bs";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const SignIn = () => {
   const [email, setEmail] = useState<string>("");
@@ -44,6 +45,9 @@ const SignIn = () => {
       // navigate('/');
     }
   };
+  const togglePasswordIsVisible = () => {
+    setPasswordIsVisible(!passwordIsVisible);
+  };
 
   const handleResetPassword = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -79,7 +83,7 @@ const SignIn = () => {
           className="absolute transform  w-5 h-5 m-5"
         />
         <input
-          className="w-full px-6 py-4 shadow-lg rounded-lg text-tBase mb-4 text-left pl-12"
+          className="w-full px-6 py-4 shadow-lg rounded-lg text-stone-500 mb-4 text-left pl-12"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -92,13 +96,20 @@ const SignIn = () => {
           className="absolute transform  w-5 h-5 m-5"
         />
         <input
-          className="w-full px-6 py-4 shadow-lg  rounded-lg text-tBase mb-64 text-left pl-12"
-          type="password"
+          className="w-full px-6 py-4 shadow-lg  rounded-lg text-stone-500 mb-64 text-left pl-12"
+          type={passwordIsVisible ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter your password"
           required
         />
+        <button
+          type="button"
+          className="absolute  transform -translate-x-10 -translate-y-[-80%]  w-5 h-5 text-stone-500"
+          onClick={togglePasswordIsVisible}
+        >
+          {passwordIsVisible ? <IoEye /> : <IoEyeOff />}
+        </button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
         <button
