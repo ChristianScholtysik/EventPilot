@@ -11,8 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const { data: eventData, error } = await supabaseClient.from("events")
-        .select(`
+      const eventData = await supabaseClient.from("events").select(`
           *,
           categories (category_name, created_at, id),
           locations (locationName, venue_id, id, created_at),
@@ -20,8 +19,8 @@ const Home = () => {
         `);
       console.log(eventData);
 
-      if (error) {
-        console.error("Error fetching event data:", error);
+      if (eventData.error) {
+        console.error("Error fetching event data:", eventData.error);
       } else if (eventData) {
         setEvents(eventData);
       }
@@ -38,13 +37,14 @@ const Home = () => {
 
   return (
     <div>
-      {events ? (
-        events.map((event) => <p key={event.id}>{event.title}</p>)
+      {events && Array.isArray(events) ? ( // Ensure events is an array
+        events.map((event) => (
+          <p key={event.id}>{event.title}</p> // Display all events
+        ))
       ) : (
         <p>Loading...</p>
       )}
     </div>
   );
 };
-
 export default Home;

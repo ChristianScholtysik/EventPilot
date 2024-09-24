@@ -29,54 +29,33 @@ export type Database = {
       }
       events: {
         Row: {
-          category_id: string
           created_at: string
           date: string
           id: string
           image_url: string
           info: string
-          location_id: string
           time: string
           title: string
         }
         Insert: {
-          category_id: string
           created_at?: string
           date: string
           id?: string
           image_url: string
           info: string
-          location_id: string
           time: string
           title: string
         }
         Update: {
-          category_id?: string
           created_at?: string
           date?: string
           id?: string
           image_url?: string
           info?: string
-          location_id?: string
           time?: string
           title?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "events_category_id_fkey"
-            columns: ["category_id"]
-            isOneToOne: false
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_location_id_fkey"
-            columns: ["location_id"]
-            isOneToOne: false
-            referencedRelation: "locations"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       favorites: {
         Row: {
