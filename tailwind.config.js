@@ -20,6 +20,9 @@ export default {
         bold: 700,
         normal: 100,
       },
+      backgroundImage: {
+        "custom-gradient": "linear-gradient(to bottom,#668BE9 ,#44ABD4)",
+      },
     },
   },
   plugins: [],
