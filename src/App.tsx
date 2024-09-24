@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Favorites from "./pages/Favorites";
 import DetailPage from "./pages/DetailPage";
 import AddEvent from "./pages/AddEvent";
+import SplashScreen from "./pages/SplashScreen";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/addevent" element={<AddEvent />} />
+            <Route path="/splash" element={<SplashScreen />} />
             {/* </Route> */}
           </Routes>
         </BrowserRouter>

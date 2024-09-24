@@ -76,7 +76,7 @@ const SignIn = () => {
       {!user && loadingPage ? (
         <SplashScreen />
       ) : (
-        <div className="flex flex-col justify-center items-center h-screen bg-gray-100 relative">
+        <div className="flex flex-col justify-center items-center h-screen w-full max-w-sm bg-gray-100 relative">
           <Logo />
           <form
             className="w-full max-w-sm bg-white p-8 rounded-lg "

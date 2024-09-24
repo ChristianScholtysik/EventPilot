@@ -12,12 +12,14 @@ const SplashScreen = () => {
         setLoadingPage(false);
       }, 80000);
     }
-  }, [setLoadingPage]);
+  }, []);
 
   return (
     <>
-      <section className="bg-custom-gradient h-screen w-full max-w-sm flex justify-center items-center">
-        <LogoSplash />
+      <section className="bg-custom-gradient h-screen w-full max-w-sm flex items-center justify-center">
+        <div className="flex justify-center">
+          <LogoSplash />
+        </div>
       </section>
     </>
   );
