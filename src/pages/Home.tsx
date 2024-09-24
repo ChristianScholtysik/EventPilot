@@ -87,6 +87,10 @@ const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const userContext = useUserContext();
   const user = userContext?.user;
+  const [locations, setLocations] = useState<Location[]>([]);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(
+    "2b94371d-9329-4182-9c83-1ac18ea36f20"
+  );
 
   // Array of avatar URLs
   const avatarUrls: string[] = [
@@ -131,6 +135,39 @@ const Home = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const locationsQuery = supabaseClient.from("locations").select("*");
+
+      const result = await locationsQuery;
+
+      if (result.error) {
+        setLocations([]);
+      } else {
+        setLocations(result.data);
+      }
+    };
+
+    fetchLocations();
+  }, [selectedLocation]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const selectQuery = supabaseClient
+        .from("events")
+        .select("*, categories(*), locations(*), venues(*), favorites(*)")
+        .eq("favorites.user_id", user.id);
+
+      const result = await selectQuery;
+      if (result.error) {
+        setEvents([]);
+      } else {
+        setEvents(result.data);
+      }
+    };
+    fetchEvents();
+  }, []);
+
   if (!user) {
     return <p>No user found.</p>;
   }
@@ -140,11 +177,33 @@ const Home = () => {
   }
 
   return (
-    <section className="h-screen flex items-center justify-center">
-      <div className="p-4 w-full max-w-sm border border-red-700">
+    <section className="h-screen flex items-center justify-center flex flex-col">
+      <header className="flex gap-12 justify-start w-full max-w-sm px-4">
+        <img src="/src/assets/img/Logo.png" alt="" className="" />
+        <div className="flex flex-col">
+          <h2 className="text-stone-500">Current Location</h2>
+          <select
+            className="text-primary"
+            name="location"
+            id="location-select"
+            value={selectedLocation || "current Location"}
+            onChange={(e) => setSelectedLocation(e.target.value)}
+          >
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.locationName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </header>
+      <div className="flex justify-start">
+        <h2 className="text-xl text-gray font-bold ">Upcoming Events</h2>
+      </div>
+      <div className="p-4 w-full max-w-sm">
         {events && events.length > 0 ? (
-          <div className="overflow-hidden relative">
-            <div className="flex space-x-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory">
+          <div className="overflow-hidden overflow-auto md:overflow-scroll  relative">
+            <div className="flex space-x-4">
               {events.map((event) => {
                 // Randomly select 3 avatars from the avatarUrls array
                 const selectedAvatars: string[] = [];
