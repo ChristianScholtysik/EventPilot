@@ -68,7 +68,6 @@ interface EventProps {
 const EventCard: React.FC<EventProps> = ({ event }) => {
   const { date, title, avatars, location, image_url } = event;
 
-  // Extract day and month from the event date
   const eventDay = new Date(date).getDate();
   const eventMonth = new Date(date).toLocaleString("default", {
     month: "short",
