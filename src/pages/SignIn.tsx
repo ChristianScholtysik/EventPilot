@@ -10,6 +10,7 @@ const SignIn = () => {
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
