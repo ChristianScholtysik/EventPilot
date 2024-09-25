@@ -177,7 +177,7 @@ const Home = () => {
   }
 
   return (
-    <section className="h-screen flex items-center justify-center flex flex-col">
+    <section className="h-screen flex items-center justify-center flex flex-col shadow-2xl">
       <header className="flex gap-12 justify-start w-full max-w-sm px-4">
         <img src="/src/assets/img/Logo.png" alt="" className="" />
         <div className="flex flex-col">

@@ -10,7 +10,7 @@ const SplashScreen = () => {
     if (setLoadingPage) {
       setTimeout(() => {
         setLoadingPage(false);
-      }, 80000);
+      }, 3000);
     }
   }, []);
 
