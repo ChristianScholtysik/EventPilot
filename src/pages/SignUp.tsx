@@ -201,7 +201,7 @@ const SignUp = () => {
                 className="uppercase bg-primary text-white font-Inter text-normal rounded-lg shadow-lg px-24 py-4 w-full flex justify-between"
                 type="submit"
               >
-                <span className="flex justify-center">Sign In</span>
+                <span className="flex justify-center">Sign Up</span>
                 <span className="rounded-full p-1 bg-white bg-opacity-40 justify-end ">
                   <BsArrowRight />
                 </span>
@@ -215,7 +215,7 @@ const SignUp = () => {
                 className="text-primary pl-2 font-normal font-InterThin"
                 onClick={() => navigate("/signin")}
               >
-                Sign Up
+                Sign In
               </button>
             </div>
           </div>

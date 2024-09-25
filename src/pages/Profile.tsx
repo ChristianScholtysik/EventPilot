@@ -128,20 +128,30 @@ const Profile = () => {
       <div className="flex justify-center h-screen ">
         <section className="flex flex-col justify-center items-center h-screen w-full max-w-sm bg-gray-100 relative shadow-xl">
           <header>
-            <h2 className="text-2xl font-bold mt-4 mb-4 font-Inter flex">
-              {userContext?.profile?.firstName} {userContext?.profile?.lastName}
-            </h2>
-            {avatarUrl ? (
+            <div className="flex items-center">
               <img
-                alt="User Avatar"
-                src={avatarUrl}
-                className="inline-block h-32 w-32 rounded-full cursor-pointer object-cover object-center"
+                src="/src/assets/img/Logo.png"
+                alt=""
+                className="h-8 justify-start text-left mr-20 "
               />
-            ) : (
-              <div className=" h-32 w-32 rounded-full bg-gray-800 flex items-center justify-center">
-                No image
-              </div>
-            )}
+              <h2 className="text-2xl font-bold mt-4 mb-4 font-Inter flex">
+                {userContext?.profile?.firstName}{" "}
+                {userContext?.profile?.lastName}
+              </h2>
+            </div>
+            <div className="flex justify-center">
+              {avatarUrl ? (
+                <img
+                  alt="User Avatar"
+                  src={avatarUrl}
+                  className="h-32 w-32 rounded-full cursor-pointer object-cover object-center "
+                />
+              ) : (
+                <div className=" h-32 w-32 rounded-full bg-gray-800 flex items-center justify-center">
+                  No image
+                </div>
+              )}{" "}
+            </div>
           </header>
           {/* //TODO: Abstände rand anpassen!!! */}
 
@@ -172,35 +182,37 @@ const Profile = () => {
             }}
             className="mt-2 mb-4 text-sm"
           />
-          <section className="flex flex-col">
-            <button
-              onClick={handleUpload}
-              disabled={uploading}
-              type="submit"
-              className={` uppercase bg-primary text-white font-Inter text-normal rounded-lg shadow-lg px-24 py-4 w-full flex justify-between mb-4 ${
-                uploading ? "bg-secondary" : "bg-primary"
-              }`}
-            >
-              <span className="flex justify-center ">
-                {uploading ? "loading" : "Upload"}
-              </span>
-              {/* <div className="  w-full rounded-full mb-4  p-1 bg-white bg-opacity-40  ">
+          <section className="flex flex-col w-full w-max-sm">
+            <div className="flex gap-2 justify-center">
+              <button
+                onClick={handleUpload}
+                disabled={uploading}
+                type="submit"
+                className={` uppercase bg-primary text-white font-Inter text-normal rounded-lg shadow-lg px-10 py-4  flex justify-between mb-4 ${
+                  uploading ? "bg-secondary" : "bg-primary"
+                }`}
+              >
+                <span className="flex justify-center ">
+                  {uploading ? "loading" : "Upload"}
+                </span>
+                {/* <div className="  w-full rounded-full mb-4  p-1 bg-white bg-opacity-40  ">
                 <BsArrowRight />
               </div> */}
-            </button>
+              </button>
+
+              <button
+                onClick={handleDelete}
+                disabled={isDeleting}
+                className={`uppercase text-white font-Inter text-normal rounded-lg shadow-lg px-10 py-4  flex justify-between mb-4 ${
+                  isDeleting ? "bg-red-700" : "bg-tertiary"
+                }`}
+              >
+                {isDeleting ? "Deleting..." : "Delete"}
+              </button>
+            </div>
 
             <button
-              onClick={handleDelete}
-              disabled={isDeleting}
-              className={`uppercase text-white font-Inter text-normal rounded-lg shadow-lg px-24 py-4 w-full flex justify-between mb-4 ${
-                isDeleting ? "bg-red-700" : "bg-tertiary"
-              }`}
-            >
-              {isDeleting ? "Deleting..." : "Delete"}
-            </button>
-
-            <button
-              className="bg-secondary text-white text-small font-Inter text-normal rounded-lg shadow-lg px-4 py-4 w-full flex justify-between items-center mb-10"
+              className="bg-secondary text-white text-small font-Inter  rounded-lg shadow-lg ml-12 mr-12 py-4  flex justify-between items-center mb-10"
               onClick={handleLogout}
             >
               <div className="flex items-center gap-2">
