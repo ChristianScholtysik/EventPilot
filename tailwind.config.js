@@ -20,6 +20,13 @@ export default {
         bold: 700,
         normal: 100,
       },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
       backgroundImage: {
         "custom-gradient": "linear-gradient(to bottom,#668BE9 ,#44ABD4)",
       },
