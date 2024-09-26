@@ -4,6 +4,7 @@ import supabaseClient from "../lib/supabaseClient";
 import { MdArrowForwardIos } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 
 const Profile = () => {
   const userContext = useUserContext();
@@ -125,7 +126,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flex justify-center h-screen ">
+      <div className="flex justify-center h-full ">
         <section className="flex flex-col justify-center items-center h-screen w-full max-w-sm bg-gray-100 relative shadow-xl">
           <header>
             <div className="flex items-center">
@@ -212,7 +213,7 @@ const Profile = () => {
             </div>
 
             <button
-              className="bg-secondary text-white text-small font-Inter  rounded-lg shadow-lg ml-12 mr-12 py-4  flex justify-between items-center mb-10"
+              className="bg-secondary text-white text-small font-Inter  rounded-lg shadow-lg ml-12 mr-12 py-4  flex justify-between items-center mb-2"
               onClick={handleLogout}
             >
               <div className="flex items-center gap-2">
@@ -224,6 +225,7 @@ const Profile = () => {
           </section>
         </section>
       </div>
+      <Navbar />
     </>
   );
 };

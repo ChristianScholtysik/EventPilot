@@ -10,7 +10,7 @@ export default {
         tBase: "var(--color-text-base)",
         date: "var(--color-date)",
         location: "var(--color-location)",
-        gray: "var(--color-gray)",
+        grey: "var(--color-gray)",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],

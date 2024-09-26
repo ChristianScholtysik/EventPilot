@@ -81,6 +81,8 @@ import { EventComplete } from "../types/supabase-types-own";
 import supabaseClient from "../lib/supabaseClient";
 import { useUserContext } from "../context/UserContext";
 import EventCard from "../components/EventCard/EventCard";
+import BottomNavbar from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   const [events, setEvents] = useState<EventComplete[]>([]);
@@ -177,7 +179,7 @@ const Home = () => {
   }
 
   return (
-    <section className="h-screen flex items-center justify-center flex flex-col shadow-2xl">
+    <section className="h-screen flex items-center justify-center flex flex-col shadow-2xl bg-stone-50">
       <header className="flex gap-12 justify-start w-full max-w-sm px-4">
         <img src="/src/assets/img/Logo.png" alt="" className="" />
         <div className="flex flex-col">
@@ -243,6 +245,7 @@ const Home = () => {
           <p>No events available.</p>
         )}
       </div>
+      <Navbar />
     </section>
   );
 };
