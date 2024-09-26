@@ -112,7 +112,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-gray-200 z-50 w-full w-max-sm">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-gray-200 z-50 w-full w-max-sm h-20">
       <div className="relative">
         {/* Floating Button */}
         <button className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-primary text-white rounded-full p-2 shadow-lg z-50 mr-4">
