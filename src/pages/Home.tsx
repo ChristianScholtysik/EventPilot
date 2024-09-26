@@ -81,7 +81,7 @@ import { EventComplete } from "../types/supabase-types-own";
 import supabaseClient from "../lib/supabaseClient";
 import { useUserContext } from "../context/UserContext";
 import EventCard from "../components/EventCard/EventCard";
-import BottomNavbar from "../components/Navbar/Navbar";
+
 import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
@@ -179,7 +179,7 @@ const Home = () => {
   }
 
   return (
-    <section className="h-screen flex items-center justify-center flex flex-col shadow-2xl bg-stone-50">
+    <section className="h-full flex items-center justify-center flex flex-col shadow-2xl bg-gray-50">
       <header className="flex gap-12 justify-start w-full max-w-sm px-4">
         <img src="/src/assets/img/Logo.png" alt="" className="" />
         <div className="flex flex-col">
@@ -202,6 +202,52 @@ const Home = () => {
       <div className="flex justify-start">
         <h2 className="text-xl text-gray font-bold ">Upcoming Events</h2>
       </div>
+      <div className="p-4 w-full max-w-sm">
+        {events && events.length > 0 ? (
+          <div className="overflow-hidden overflow-auto md:overflow-scroll  relative">
+            <div className="flex space-x-4">
+              {events.map((event) => {
+                // Randomly select 3 avatars from the avatarUrls array
+                const selectedAvatars: string[] = [];
+                const numberOfAvatars = 3; // Number of avatars to select
+
+                while (selectedAvatars.length < numberOfAvatars) {
+                  const randomIndex = Math.floor(
+                    Math.random() * avatarUrls.length
+                  );
+                  const selectedAvatar = avatarUrls[randomIndex];
+
+                  // Avoid duplicates
+                  if (!selectedAvatars.includes(selectedAvatar)) {
+                    selectedAvatars.push(selectedAvatar);
+                  }
+                }
+
+                return (
+                  <div className="inline-block w-64 snap-start" key={event.id}>
+                    <EventCard
+                      event={{
+                        date: event.date,
+                        title: event.title,
+                        avatars: selectedAvatars,
+                        location:
+                          event.locations?.locationName || "Unknown Location",
+                        image_url:
+                          event.image_url || "src/assets/img/Image.png",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <p>No events available.</p>
+        )}
+      </div>
+      <h2 className="text-xl text-gray font-bold text-left justify-start">
+        Nearby you
+      </h2>
       <div className="p-4 w-full max-w-sm">
         {events && events.length > 0 ? (
           <div className="overflow-hidden overflow-auto md:overflow-scroll  relative">

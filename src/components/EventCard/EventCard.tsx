@@ -162,7 +162,7 @@ const EventCard: React.FC<EventProps> = ({ event }) => {
       </div>
 
       {/* Event Title */}
-      <h2 className="mt-4 text-xl font-semibold text-gray-800 px-4">{title}</h2>
+      <h2 className="mt-2 text-xl font-semibold text-gray-800 px-4">{title}</h2>
 
       {/* Avatars and Location */}
       <section className="flex items-center">
