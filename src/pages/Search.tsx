@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import { useUserContext } from "../context/UserContext";
 import supabaseClient from "../lib/supabaseClient";
-import { FaSearch } from "react-icons/fa";
+import { FaCocktail, FaMusic, FaSearch } from "react-icons/fa";
+import { Category, EventComplete } from "../types/supabase-types-own";
+import { RiGalleryUploadFill } from "react-icons/ri";
+import { MdSportsSoccer } from "react-icons/md";
 
 const Search = () => {
   const [locations, setLocations] = useState<Location[]>([]);
@@ -52,7 +55,7 @@ const Search = () => {
 
   useEffect(() => {
     const fetchLocations = async () => {
-      let locationsQuery = supabaseClient.from("locations").select("*");
+      const locationsQuery = supabaseClient.from("locations").select("*");
 
       const result = await locationsQuery;
 
@@ -88,15 +91,12 @@ const Search = () => {
     );
   };
   const addFavorite = async (eventId: string) => {
-    const favoritesInsertResponse = await supabaseClient
+    const favoritesResponse = await supabaseClient
       .from("favorites")
       .insert({ user_id: user.id, event_id: eventId });
 
-    if (favoritesInsertResponse.error) {
-      console.error(
-        "Error setting favorite",
-        favoritesInsertResponse.error.message
-      );
+    if (favoritesResponse.error) {
+      console.error("Error setting favorite", favoritesResponse.error.message);
       return;
     } else {
       setEvents(
@@ -165,10 +165,55 @@ const Search = () => {
             placeholder="| Search..."
           />
         </div>
-        <section>
-          <button className="bg-secondary">Music</button>
-          <button className="bg-lila-500">Art</button>
-          <button className="">Sport</button>
+        <section className="flex gap-2 ml-3 mr-3">
+          <button
+            className={` px-4 py-2 rounded flex gap-2 items-center ${
+              selectedCategory === "2a2a6c8a-32a7-4a4e-a6be-da1f2cce2f00"
+                ? "bg-search text-white"
+                : "bg-secondary"
+            }`}
+            onClick={() =>
+              handleCategoryClick("2a2a6c8a-32a7-4a4e-a6be-da1f2cce2f00")
+            }
+          >
+            <FaMusic /> Music
+          </button>
+          <button
+            className={`px-4 py-2 rounded flex gap-2 items-center ${
+              selectedCategory === "de2b3313-80a2-484d-be27-9ab26a8b93a7"
+                ? "bg-search text-white "
+                : "bg-secondary"
+            }`}
+            onClick={() =>
+              handleCategoryClick("de2b3313-80a2-484d-be27-9ab26a8b93a7")
+            }
+          >
+            <RiGalleryUploadFill /> Art
+          </button>
+          <button
+            className={`px-4 py-2 rounded flex gap-2 items-center ${
+              selectedCategory === "d19aec9e-0fed-479a-a411-2f81138fdc3c"
+                ? "bg-search text-white"
+                : "bg-secondary"
+            }`}
+            onClick={() =>
+              handleCategoryClick("d19aec9e-0fed-479a-a411-2f81138fdc3c")
+            }
+          >
+            <MdSportsSoccer /> Sports
+          </button>
+          <button
+            className={`px-4 py-2 rounded flex gap-2 items-center ${
+              selectedCategory === "5285acce-39bb-4f2c-b5ae-1e8bad72e3ea"
+                ? "bg-search text-white"
+                : "bg-secondary"
+            }`}
+            onClick={() =>
+              handleCategoryClick("5285acce-39bb-4f2c-b5ae-1e8bad72e3ea")
+            }
+          >
+            <FaCocktail /> Party
+          </button>
         </section>
       </header>
       <Navbar />

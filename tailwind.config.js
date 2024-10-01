@@ -11,6 +11,7 @@ export default {
         date: "var(--color-date)",
         location: "var(--color-location)",
         grey: "var(--color-gray)",
+        search: "var(--color-search)",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
